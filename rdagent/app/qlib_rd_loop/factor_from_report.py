@@ -124,6 +124,9 @@ class FactorReportLoop(FactorRDLoop, metaclass=LoopMeta):
             while True:
                 if FACTOR_FROM_REPORT_PROP_SETTING.is_report_limit_enabled and self.valid_pdf_file_count > 15:
                     break
+                if self.pdf_file_index >= len(self.judge_pdf_data_items):
+                    break
+
                 report_file_path = self.judge_pdf_data_items[self.pdf_file_index]
                 logger.info(f"Processing number {self.pdf_file_index} report: {report_file_path}")
                 self.pdf_file_index += 1
